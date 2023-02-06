@@ -13,8 +13,7 @@ public class CdHouseTradeSchedualer {
     @Autowired
     private TCdHouseTradeInfoMapper tCdHouseTradeInfoMapper;
 
-    //@Scheduled(cron = "0 0 22 * * ?")
-    @Scheduled(fixedDelay = 3000)
+    @Scheduled(cron = "0 0 22 * * ?")
     public void startPullCdHouseTradeInfo() {
         Spider.create(new CdHouseTradeHandler(tCdHouseTradeInfoMapper))
                 .addUrl("https://www.cdzjryb.com/SCXX/Default.aspx?action=ucEveryday2")
