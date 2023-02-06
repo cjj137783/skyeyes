@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<!--使用方法:mvn mybatis-generator:generate-->
+<generatorConfiguration>
+    <!--读取配置文件地址-->
+    <!-- properties resource="application.properties"/ -->
+    <!--连接驱动要确定地址-->
+    <classPathEntry location="/Users/a1/software/mavenRepo/mysql/mysql-connector-java/8.0.29/mysql-connector-java-8.0.29.jar"/>
+    <context id="context1" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/turing"
+                        userId="root"
+                        password="12345678">
+        </jdbcConnection>
+        <!--实体类也不用提前，建立，会自动根据数据库生成，对应数据库中字段-->
+        <javaModelGenerator targetPackage="com.turing.skyeyes.entity" targetProject="src/main/java"/>
+        <!--映射的mapper.xml文件-->
+        <sqlMapGenerator targetPackage="com.turing.skyeyes.mapper" targetProject="src/main/java"/>
+        <!--映射文件，目标不必提前生成，会自动生成-->
+        <javaClientGenerator targetPackage="com.turing.skyeyes.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
+        <!--输入表明，表名不用对应实体，会自动判断-->
+        <table tableName="t_cd_house_trade_info"></table>
+
+    </context>
+</generatorConfiguration>
